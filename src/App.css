@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  /* Accent tokens — swap these to reskin the app quickly */
+  --accent-muted: rgba(0, 255, 154, 0.12);
+  --accent-contrast: #000000;
+  --accent: #00FF9A;
+  --accent-strong: #66FFD6;
+
+  /* Base surfaces - Pure black background */
+  --bg: #050505;
+  --panel: #0f0f10;
+  --card: #141516;
+  --card-2: #121314;
+
+  /* Text & lines */
+  --text: #fbfbfc;
+  --muted: #d0d6dd;
+  --muted-2: #b7bec6;
+  --border: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.22);
+
+  /* Chart grid and axis colors (light colors for dark theme) */
+  --chart-grid: rgba(255, 255, 255, 0.15);
+  --chart-axis-text: #c9ced6;
+  --chart-tooltip-bg: #1a1a1a;
+  
+  /* Table grid lines */
+  --table-grid: rgba(255, 255, 255, 0.15);
+
+  /* Shadows & radius */
+  --shadow-soft: 0 15px 40px rgba(0, 0, 0, 0.42);
+  --shadow-glow: 0 12px 44px rgba(0, 255, 154, 0.14);
+  --radius: 0px;
+
+  /* Layout spacing */
+  --page-pad-x: 18px;
+  --page-pad-top: 30px;
+
+  /* Typography scale */
+  --text-xxs: 11px;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+  --line-tight: 1.18;
+  --line-body: 1.6;
+
+  /* Chart customization */
+  --chart-height: 260px;
+  --chart-line-color: #00FF9A;
+  --chart-point-color: #00FF9A;
+  /* Habit tracker chart colors (defaults follow green accent theme) */
+  --habit-chart-line: var(--accent);
+  --habit-chart-point: var(--accent-strong);
+  --habit-chart-fill: transparent;
+
+  /* Habit tracker table background/text (dark theme defaults) */
+  --habit-table-bg: #000000;
+  --habit-table-text: #ffffff;
+  /* Pill background/text (dark theme defaults) */
+  --pill-bg: #000000;
+  --pill-text: #ffffff;
+  
+  /* SAS/MEDS chart offset control */
+  --chart-margin-left: -20px;
+  
+  /* Habit Tracker graph height */
+  --habit-graph-height: 400px;
+  
+  /* Tracker Graphs height */
+  --tracker-graph-height: 300px;
+  --tracker-graph-height-mobile: 250px;
+  
+  /* Habit Tracker Table Controls */
+  --habit-cell-size: 32px;
+  --habit-cell-size-mobile: 16px;
+  --habit-cell-padding: 6px;
+  --habit-th-font-size: 12px;
+  --habit-name-font-size: 12px;
+  --habit-name-width: 90px;
+}
+
+/* Light theme overrides */
+[data-theme="light"] {
+  --accent: #00995C;  /* Darker green for better contrast on white */
+  --accent-muted: rgba(0, 153, 92, 0.12);
+  --accent-strong: #00B36B;
+  
+  /* Pure white background */
+  --bg: #fbfbfb;
+  --panel: #fbfbfb;
+  --card: #f1f1f1;
+  --card-2: #efeff0;
+
+  --text: #0f1213;
+  --muted: #4b565e;
+  --muted-2: #6b757f;
+  --border: rgba(17, 18, 20, 0.14);
+  --border-strong: rgba(17, 18, 20, 0.20);
+
+  --shadow-soft: 0 10px 30px rgba(16, 24, 32, 0.03);
+  --shadow-glow: 0 8px 30px rgba(0, 153, 92, 0.04);
+  
+  /* Chart grid and axis colors (dark colors for light theme) */
+  --chart-grid: rgba(0, 0, 0, 0.15);
+  --chart-axis-text: #444444;
+  --chart-tooltip-bg: #ffffff;
+  /* Habit tracker table colors for light theme */
+  --habit-table-bg: #ffffff;
+  --habit-table-text: #111214;
+  /* Pill colors for light theme */
+  --pill-bg: #ffffff;
+  --pill-text: #111214;
+  /* Habit tracker chart colors (light theme overrides using darker green) */
+  --habit-chart-line: #00995C;
+  --habit-chart-point: #00B36B;
+  --habit-chart-fill: transparent;
+  
+  /* Table grid lines */
+  --table-grid: rgba(0, 0, 0, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Utility to apply the accent glow where desired. Components that already use */
+/* `box-shadow: var(--shadow-glow)` will pick up the new subtle glow automatically. */
+.accent-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: var(--bg); /* Pure solid color - no gradients */
+  color: var(--text);
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  font-size: var(--text-md);
+  line-height: var(--line-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+h1,
+.heading-1 {
+  font-size: var(--text-3xl);
+  line-height: var(--line-tight);
+  margin: 0;
+}
+
+h2,
+.heading-2 {
+  font-size: var(--text-2xl);
+  line-height: var(--line-tight);
+  margin: 0;
+}
+
+h3,
+.heading-3 {
+  font-size: var(--text-xl);
+  line-height: var(--line-tight);
+  margin: 0;
+}
+
+h4,
+.heading-4 {
+  font-size: var(--text-lg);
+  line-height: var(--line-tight);
+  margin: 0;
+}
+
+h5,
+.heading-5 {
+  font-size: var(--text-md);
+  line-height: var(--line-tight);
+  margin: 0;
+}
+
+h6,
+.heading-6 {
+  font-size: var(--text-sm);
+  line-height: var(--line-tight);
+  margin: 0;
+}
+
+p,
+label,
+input,
+textarea,
+select,
+option,
+button,
+small {
+  font-size: var(--text-sm);
+  line-height: var(--line-body);
+}
+
+small {
+  font-size: var(--text-xs);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Force sharp corners across the app */
+button,
+input,
+textarea,
+select,
+.pill,
+.entry-card,
+.entries-overlay__content,
+.journal-card,
+.journal-recent,
+.moments-card,
+.moments-summary,
+.moments-recent,
+.habit-card,
+.graph-card,
+.habit-tracker__table-wrapper,
+.habit-tracker-table th,
+.habit-tracker-table td,
+.navbar__brand,
+.navbar__toggle,
+.nav-link,
+.logout-button,
+.floating-navbar-container,
+.floating-nav-button,
+.unified-tracker__container,
+.unified-tracker__table-wrapper,
+.unified-tracker__table th,
+.unified-tracker__table td,
+.show-trackers__tab,
+.hover-card,
+.meds-monthly-health-tracker,
+.sas-monthly-health-tracker {
+  border-radius: 0 !important;
+}
+
+::selection {
+  background: rgba(0, 255, 154, 0.22);
+  color: var(--text);
+}
+
+/* App content wrapper */
+.app-content {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Mobile-friendly chart containers */
+.recharts-responsive-container {
+  min-width: 0;
+}
+
+/* Ensure charts don't overflow on mobile */
+@media (max-width: 768px) {
+  .recharts-wrapper {
+    font-size: 10px;
+  }
+
+  .recharts-legend-wrapper {
+    font-size: 10px !important;
+  }
+
+  .recharts-cartesian-axis-tick-value {
+    font-size: 9px;
+  }
+
+  .recharts-tooltip-wrapper {
+    font-size: 11px;
+  }
+
+  /* Better touch targets for mobile */
+  button,
+  .btn,
+  select {
+    min-height: 44px;
+  }
+
+  /* Prevent horizontal overflow */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .recharts-legend-wrapper {
+    font-size: 9px !important;
+  }
+
+  .recharts-cartesian-axis-tick-value {
+    font-size: 8px;
+  }
+}
+
+/* Loading and Sync Status Styles */
+.app-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sync-status-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  padding: 8px 16px;
+  text-align: center;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  z-index: 9999;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   GLOBAL COMPONENT STYLES
+   ======================================== */
+
+/* Universal Month/Year Navigation */
+.month-nav,
+.year-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.month-nav__btn,
+.year-nav__btn {
+  height: 34px;
+  width: 34px;
+  color: var(--bg);
+  background-color: var(--accent);
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+}
+
+.month-nav__btn:hover,
+.year-nav__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 255, 154, 0.24);
+  border-color: var(--accent);
+}
+
+/* Universal Scrollbar Styles (thin, subtle) */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Nav-style Select/Dropdown */
+.nav-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px 36px 10px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  color: var(--text);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23bfc4ce' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  min-width: 180px;
+}
+
+.nav-select:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+.nav-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 255, 154, 0.15);
+}
+
+.nav-select option {
+  background: var(--panel);
+  color: var(--text);
+  padding: 10px;
+}

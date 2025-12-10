@@ -1,0 +1,218 @@
+.meds-monthly-health-tracker,
+.meds-monthly-health-tracker * {
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+}
+
+.meds-monthly-health-tracker {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 18px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft), var(--shadow-glow);
+  color: var(--text);
+}
+
+.meds-month-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  text-transform: uppercase;
+  /* Keep nav on a single row: prev | month (center) | next */
+}
+
+.meds-month-navigation h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+}
+
+/* Navigation buttons now use global .month-nav__btn from App.css */
+/* Keep only local overrides if needed */
+.meds-month-navigation button {
+  border-radius: var(--radius);
+}
+
+.meds-chart-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--panel);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 18px;
+  box-shadow: var(--shadow-soft);
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.meds-chart-container .recharts-responsive-container {
+  margin: 0 !important;
+  padding: 0 !important;
+      margin-left: var(--chart-margin-left, 0) !important;
+
+}
+
+.meds-chart-container .recharts-wrapper {
+  margin: 0 !important;
+      margin-left: var(--chart-margin-left, 0) !important;
+
+}
+
+.meds-chart-container p {
+  color: var(--muted);
+}
+
+.meds-legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.meds-legend-card {
+  display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.meds-legend-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.meds-legend-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meds-legend-label {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-size: 0.95rem;
+}
+
+.meds-legend-hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .meds-monthly-health-tracker {
+    padding: 16px 14px 20px;
+    gap: 14px;
+  }
+
+  .meds-month-navigation {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .meds-month-navigation h2 {
+    font-size: 1.1rem;
+    /* allow the title to take remaining space and stay centered */
+    flex: 1 1 auto;
+    width: auto;
+    text-align: center;
+    margin: 0 8px;
+  }
+
+  .meds-month-navigation button {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    min-width: 44px;
+  }
+
+  .meds-legend-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .meds-legend-card {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .meds-legend-swatch {
+    width: 20px;
+    height: 20px;
+  }
+
+  .meds-legend-label {
+    font-size: 0.85rem;
+  }
+
+  .meds-legend-hint {
+    font-size: 0.75rem;
+  }
+
+  .meds-chart-container {
+    padding: 10px 0;
+    min-height: 360px;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+  }
+
+  .meds-chart-container .recharts-responsive-container {
+    margin: 0 -10px !important;
+    width: calc(100% + 20px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .meds-monthly-health-tracker {
+    padding: 14px 10px 18px;
+    gap: 12px;
+  }
+
+  .meds-month-navigation h2 {
+    font-size: 1rem;
+  }
+
+  .meds-month-navigation button {
+    padding: 10px 12px;
+  }
+
+  .meds-legend-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .meds-legend-card {
+    padding: 8px 10px;
+  }
+
+  .meds-legend-swatch {
+    width: 20px;
+    height: 20px;
+  }
+
+  .meds-chart-container {
+    min-height: 300px;
+    padding: 8px 0;
+  }
+
+  .meds-chart-container .recharts-responsive-container {
+    /* margin: 0 -8px !important; */
+    width: calc(100% + 16px) !important;
+  }
+}

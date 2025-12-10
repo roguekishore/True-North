@@ -1,0 +1,323 @@
+.navbar,
+.navbar * {
+    font-family: "Space Mono", monospace;
+    box-sizing: border-box;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 14px var(--page-pad-x);
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.navbar__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+
+.navbar__brand:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-1px);
+}
+
+.brand-mark {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--accent-contrast);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.brand-word {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-size: 15px;
+}
+
+.navbar__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+
+.navbar__toggle span {
+    width: 20px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 999px;
+}
+
+.navbar__toggle.is-open {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Mobile controls container */
+.navbar__mobile-controls {
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Mobile theme toggle */
+.theme-toggle__mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+}
+
+.theme-toggle__mobile svg {
+    width: 18px;
+    height: 18px;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link,
+.logout-button {
+    text-decoration: none;
+    color: var(--text);
+    background: var(--card);
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link:hover,
+.logout-button:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-1px);
+}
+
+.nav-link.is-active {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow);
+}
+
+.logout-button {
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        padding: 12px 14px;
+    }
+
+    .navbar__mobile-controls {
+        display: flex;
+    }
+
+    .navbar__toggle {
+        display: inline-flex;
+    }
+
+    .navbar__brand {
+        padding: 8px 10px;
+    }
+
+    .nav-list {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 0;
+        border-radius: 0px;
+        border: 1px solid transparent;
+        background: var(--panel);
+        box-shadow: var(--shadow-soft);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: max-height 180ms ease, opacity 150ms ease, padding 150ms ease, border-color 150ms ease;
+    }
+
+    .nav-list.is-open {
+        max-height: 420px;
+        padding: 12px;
+        opacity: 1;
+        pointer-events: auto;
+        border-color: var(--border);
+    }
+
+    .nav-link,
+    .logout-button {
+        width: 100%;
+        text-align: left;
+        padding: 12px 14px;
+    }
+
+    .nav-list > li {
+        width: 100%;
+    }
+
+    .nav-list > li:not(:last-child) {
+        margin-bottom: 6px;
+    }
+
+    /* Hide desktop theme toggle in mobile menu */
+    .theme-toggle__desktop {
+        display: none;
+    }
+    /* On mobile, show only the logo and hide the brand word */
+    .brand-word {
+        display: none;
+    }
+}
+
+.theme-toggle__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--card);
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+    cursor: pointer;
+}
+
+.theme-toggle__button svg {
+    flex-shrink: 0;
+}
+
+.theme-toggle__label {
+    white-space: nowrap;
+}
+
+.theme-toggle__button:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-1px);
+}
+
+/* Sync Button Styles */
+.sync-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--card);
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+    cursor: pointer;
+}
+
+.sync-button:hover:not(:disabled) {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-1px);
+}
+
+.sync-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.sync-button svg {
+    flex-shrink: 0;
+}
+
+/* Nav icon helpers */
+.nav-icon {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.nav-link .nav-icon svg,
+.logout-button .nav-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.sync-button__label {
+    white-space: nowrap;
+}
+
+.sync-button__mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+}
+
+.sync-button__mobile svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Hide desktop sync in mobile */
+@media (max-width: 900px) {
+    .sync-toggle__desktop {
+        display: none;
+    }
+}

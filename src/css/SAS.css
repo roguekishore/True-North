@@ -1,0 +1,217 @@
+.sas-monthly-health-tracker,
+.sas-monthly-health-tracker * {
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+}
+
+.sas-monthly-health-tracker {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 18px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft), var(--shadow-glow);
+  color: var(--text);
+}
+
+.sas-month-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  text-transform: uppercase;
+  
+}
+
+.sas-month-navigation h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+}
+
+/* Navigation buttons now use global .month-nav__btn from App.css */
+/* Keep only local overrides if needed */
+.sas-month-navigation button {
+  border-radius: var(--radius);
+}
+
+.sas-chart-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--panel);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 18px;
+  box-shadow: var(--shadow-soft);
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Control chart left offset/margin via CSS variable */
+.sas-chart-container .recharts-responsive-container {
+  margin: 0 !important;
+  margin-left: var(--chart-margin-left, 0) !important;
+  padding: 0 !important;
+}
+
+.sas-chart-container .recharts-wrapper {
+  margin: 0 !important;
+  margin-left: var(--chart-margin-left, 0) !important;
+}
+
+.sas-chart-container p {
+  color: var(--muted);
+}
+
+.sas-legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.sas-legend-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.sas-legend-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.sas-legend-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sas-legend-label {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.sas-legend-hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .sas-monthly-health-tracker {
+    padding: 16px 14px 20px;
+    gap: 14px;
+  }
+
+  .sas-month-navigation {
+    /* Keep controls on a single row on narrow screens */
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .sas-month-navigation h2 {
+    font-size: 1.1rem;
+    order: 0;
+    width: auto;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .sas-month-navigation button {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    min-width: 44px;
+  }
+
+  .sas-legend-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+  }
+
+  .sas-legend-card {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .sas-legend-swatch {
+            width: 20px;
+        height: 20px;
+  }
+
+  .sas-legend-label {
+    font-size: 0.85rem;
+  }
+
+  .sas-legend-hint {
+    font-size: 0.75rem;
+  }
+
+  .sas-chart-container {
+    padding: 10px 0;
+    min-height: 360px;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+  }
+
+  .sas-chart-container .recharts-responsive-container {
+    /* margin: 0 -10px !important; */
+    width: calc(100% + 20px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sas-monthly-health-tracker {
+    padding: 14px 10px 18px;
+    gap: 12px;
+  }
+
+  .sas-month-navigation h2 {
+    font-size: 1rem;
+  }
+
+  .sas-month-navigation button {
+    padding: 10px 12px;
+    flex: 0 0 auto;
+  }
+
+  .sas-legend-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 8px;
+  }
+
+  .sas-legend-card {
+    padding: 10px 12px;
+  }
+
+  .sas-legend-swatch {
+    width: 20px;
+    height: 20px;
+  }
+
+  .sas-chart-container {
+    min-height: 300px;
+    padding: 8px 0;
+  }
+
+  .sas-chart-container .recharts-responsive-container {
+    /* margin: 0 -8px !important; */
+    width: calc(100% + 16px) !important;
+  }
+}

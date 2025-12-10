@@ -1,0 +1,22 @@
+.journal-component-container, 
+.journal-component-container * {
+    font-family: "Space Mono", monospace !important;
+}
+
+.journal-component-container{
+    padding-top: 90px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 720px) {
+    .journal-component-container {
+        padding-top: 75px;
+    }
+}
+
+@media (max-width: 480px) {
+    .journal-component-container {
+        padding-top: 70px;
+    }
+}
