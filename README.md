@@ -2,7 +2,7 @@
 
 A personal growth companion app for journaling, habit tracking, and emotional wellness monitoring. Built with React and Firebase.
 
-![True North Banner](./docs/images/banner-placeholder.png)
+<img width="1920" height="1140" alt="Screenshot 2025-12-10 175816" src="https://github.com/user-attachments/assets/91d4d837-f678-47b2-a93b-7c7a219ac6ea" />
 
 ## ✨ Features
 
@@ -11,7 +11,11 @@ A personal growth companion app for journaling, habit tracking, and emotional we
 - **Daily Moments**: Log your favorite moments throughout each day
 - **Entry History**: Browse and revisit past journal entries
 
-![Journal Screenshot](./docs/images/journal-placeholder.png)
+<img width="1920" height="1140" alt="Screenshot 2025-12-10 175516" src="https://github.com/user-attachments/assets/4781be30-fbec-4b41-85e2-7aa121e7b062" />
+
+<img width="1920" height="1140" alt="Screenshot 2025-12-10 175828" src="https://github.com/user-attachments/assets/8b0334b0-f7a2-4cba-9d46-0193143925e7" />
+
+<img width="1920" height="1140" alt="image" src="https://github.com/user-attachments/assets/42085b14-7dd9-4098-b32a-c630e13d4c1c" />
 
 ### 📊 Multi-Tracker System
 Track various aspects of your daily life with customizable trackers:
@@ -28,27 +32,30 @@ Track various aspects of your daily life with customizable trackers:
 | 📋 **Discipline** | Track consistency with goals |
 | 💭 **Thoughts** | Monitor intrusive thoughts |
 
-![Trackers Screenshot](./docs/images/trackers-placeholder.png)
+<img width="1920" height="1140" alt="Screenshot 2025-12-10 175610" src="https://github.com/user-attachments/assets/04a9254c-0aea-4a19-91e4-a52316cba246" />
 
 ### 📈 Analytics & Visualization
 - **Interactive Charts**: Visualize your tracker data over time
 - **Monthly Views**: See patterns and trends across months
 - **SAS/MEDS Dashboard**: Combined view of specific tracker groups
 
-![Analytics Screenshot](./docs/images/analytics-placeholder.png)
+<img width="1920" height="1140" alt="Screenshot 2025-12-10 175620" src="https://github.com/user-attachments/assets/fb374570-5856-4194-9372-aad4e887dbe5" />
+
+<img width="1920" height="1140" alt="Screenshot 2025-12-10 175945" src="https://github.com/user-attachments/assets/7dc049a7-1a28-4345-9e2e-f4cb68c0231f" />
+
 
 ### ✅ Habit Tracker
 - Build and maintain daily habits
 - Visual progress tracking
 - Streak monitoring
 
-![Habits Screenshot](./docs/images/habits-placeholder.png)
+<img width="1920" height="1140" alt="Screenshot 2025-12-10 175800" src="https://github.com/user-attachments/assets/a594600d-bc23-470b-91d4-a3b25a1e4310" />
 
 ## 🛠️ Tech Stack
 
 - **Frontend**: React 18, React Router v7
 - **State Management**: Redux Toolkit
-- **Backend**: Firebase (Firestore, Authentication)
+- **Backend**: Firebase (Firestore, FireAuth)
 - **Charts**: Chart.js, Recharts
 - **Icons**: React Icons
 - **Styling**: CSS with CSS Variables (Dark/Light theme support)
