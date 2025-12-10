@@ -2,6 +2,8 @@
 
 A personal growth companion app for journaling, habit tracking, and emotional wellness monitoring. Built with React and Firebase.
 
+Application link - https://thetruenorth.app
+
 <img width="1920" height="1140" alt="Screenshot 2025-12-10 175816" src="https://github.com/user-attachments/assets/91d4d837-f678-47b2-a93b-7c7a219ac6ea" />
 
 ## ✨ Features
