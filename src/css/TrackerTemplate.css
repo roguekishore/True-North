@@ -1,0 +1,37 @@
+.tracker-template-container * {
+  font-family: "Space Mono", monospace !important;
+}
+
+.tracker-template-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 18px;
+    z-index: 10;
+  }
+  
+  .back-button {
+    padding: 8px 14px;
+    align-self: flex-start; 
+    margin-top: 16px;
+    margin-left: 6px;
+    text-align: center;
+    color: var(--bg);
+    background: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+  }
+
+  .tracker-content{
+    margin-bottom: 75px;
+  }
+
+  
+.back-button:hover {
+    box-shadow: 0 10px 24px rgba(0, 255, 154, 0.2);
+  }

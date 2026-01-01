@@ -1,0 +1,787 @@
+/* Shell wrapper for consistent layout with other components */
+.unified-tracker__shell {
+  font-family: "Space Mono", monospace;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--page-pad-top) 24px 40px;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.unified-tracker__palette-header {
+  font-size: var(--text-sm);
+}
+
+.unified-tracker__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.unified-tracker__head .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+.unified-tracker__head h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.unified-tracker__head .subtext {
+  color: var(--muted);
+  margin: 6px 0 0;
+}
+
+.unified-tracker__year {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+}
+
+/* Year navigation buttons now use global .year-nav__btn from App.css */
+/* Keep only local overrides if needed */
+.unified-tracker__year button {
+  border-radius: var(--radius);
+}
+
+.unified-tracker__container {
+  --tracker-square-size: 32px;
+  font-family: "Space Mono", monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 20px 24px;
+  color: var(--text);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(0, 255, 154, 0.02)) var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius);
+  width: 100%;
+}
+
+.unified-tracker__toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.unified-tracker__toolbar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.unified-tracker__quicknav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.unified-tracker__quicknav-label {
+  margin: 0;
+  font-size: var(--text-xs);
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.unified-tracker__quicknav-rail {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Single centered tracker display */
+.unified-tracker__quicknav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 6px 4px;
+  overflow: hidden;
+}
+
+.unified-tracker__quicknav-button {
+  width: auto;
+  min-width: 160px;
+  max-width: 280px;
+  padding: 12px 20px;
+  background: var(--panel);
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 255, 154, 0.18);
+  color: var(--text);
+  text-align: center;
+  cursor: pointer;
+  font-size: var(--text-sm);
+  transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease, background-color 120ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(0, 255, 154, 0.08);
+}
+
+/* Hide non-active buttons - only show active one */
+.unified-tracker__quicknav-button:not(.is-active) {
+  display: none;
+}
+
+.unified-tracker__quicknav-button:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.unified-tracker__quicknav-button.is-active {
+  display: inline-flex;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 255, 154, 0.18);
+  background: rgba(0, 255, 154, 0.08);
+}
+
+.unified-tracker__quicknav-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.unified-tracker__quicknav-text {
+  white-space: nowrap;
+}
+
+.unified-tracker__quicknav-arrow {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 120ms ease, transform 120ms ease;
+}
+
+.unified-tracker__quicknav-arrow:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.unified-tracker__quicknav-list::-webkit-scrollbar {
+  display: none;
+}
+
+.unified-tracker__select {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+}
+
+.unified-tracker__select label {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.unified-tracker__select select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px 36px 10px 14px;
+  border-radius: 0;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  min-width: 180px;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+  font-size: var(--text-sm);
+  font-family: inherit;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23bfc4ce' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.unified-tracker__select select:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+.unified-tracker__select select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 255, 154, 0.15);
+}
+
+.unified-tracker__select select option {
+  background: var(--panel);
+  color: var(--text);
+  font-size: var(--text-sm);
+  padding: 10px;
+}
+
+/* Inner year control (inside toolbar) */
+.unified-tracker__year-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+}
+
+.unified-tracker__year-inner button {
+  height: 32px;
+  width: 32px;
+  color: var(--bg);
+  background-color: var(--accent);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.unified-tracker__year-inner button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 255, 154, 0.22);
+}
+
+.unified-tracker__header {
+  text-align: center;
+  width: 100%;
+}
+
+.unified-tracker__header h1 {
+  margin: 0;
+  font-size: var(--text-3xl);
+  letter-spacing: 0.01em;
+}
+
+.unified-tracker__header p {
+  margin: 8px 0 4px;
+  color: var(--muted);
+  font-size: var(--text-sm);
+  line-height: var(--line-body);
+}
+
+.unified-tracker__hint {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--muted);
+  text-align: center;
+}
+
+.unified-tracker__table-wrapper {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: visible;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  min-height: 520px;
+  padding: 12px 12px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  /* Scrollbar styling - matches habit tracker */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.unified-tracker__table-wrapper::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.unified-tracker__table-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.unified-tracker__table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.unified-tracker__table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+.unified-tracker__table-hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+/* Loading state overlay */
+.unified-tracker__loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: var(--radius);
+  z-index: 10;
+}
+
+.unified-tracker__loading span {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.unified-tracker__table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: var(--text);
+  margin: 0 auto 12px;
+  min-width: unset;
+  position: relative;
+  table-layout: fixed;
+}
+
+.unified-tracker__table th,
+.unified-tracker__table td {
+  padding: 0;
+  text-align: center;
+  border: 1px solid var(--border);
+  font-size: 10px;
+  background: var(--panel);
+  width: var(--tracker-square-size);
+  min-width: var(--tracker-square-size);
+  max-width: var(--tracker-square-size);
+  height: var(--tracker-square-size);
+  box-sizing: border-box;
+}
+
+.unified-tracker__table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: var(--card);
+  color: var(--muted);
+}
+
+.unified-tracker__table thead th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 6;
+  background: var(--card) !important;
+  min-width: 50px !important;
+  width: 50px !important;
+  max-width: 50px !important;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+.unified-tracker__month-label {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  background: var(--card) !important;
+  min-width: 50px !important;
+  width: 50px !important;
+  max-width: 50px !important;
+  height: var(--tracker-square-size) !important;
+  text-align: left !important;
+  padding-left: 6px !important;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box !important;
+}
+
+.unified-tracker__cell {
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+  color: var(--text);
+}
+
+.unified-tracker__cell:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 0 2px rgba(0, 255, 154, 0.15);
+}
+
+.unified-tracker__hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.unified-tracker__palette-card {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.unified-tracker__palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--tracker-square-size), var(--tracker-square-size)));
+  gap: 6px;
+  width: 100%;
+  justify-content: center;
+}
+
+.unified-tracker__palette-button {
+  width: var(--tracker-square-size);
+  height: var(--tracker-square-size);
+  min-height: var(--tracker-square-size);
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 11px;
+  display: grid;
+  place-items: center;
+}
+
+.unified-tracker__palette-button.is-active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 255, 154, 0.16);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .unified-tracker__shell {
+    padding: 22px 16px 32px;
+  }
+  
+  .unified-tracker__container {
+    padding: 16px 14px 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .unified-tracker__shell {
+    padding: 85px 16px 40px;
+  }
+
+  .unified-tracker__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .unified-tracker__head h1 {
+    font-size: 1.5rem;
+  }
+
+  .unified-tracker__year {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .unified-tracker__quicknav-list {
+    grid-auto-columns: minmax(140px, 1fr);
+  }
+  .unified-tracker__container {
+    padding: 14px 12px 18px;
+    gap: 12px;
+    --tracker-square-size: 28px;
+  }
+
+  .unified-tracker__quicknav-list {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .unified-tracker__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .unified-tracker__year-inner {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .unified-tracker__header h1 {
+    font-size: 1.6rem;
+  }
+
+  .unified-tracker__table th,
+  .unified-tracker__table td {
+    font-size: 10px;
+    width: var(--tracker-square-size);
+    min-width: var(--tracker-square-size);
+    max-width: var(--tracker-square-size);
+    height: var(--tracker-square-size);
+    box-sizing: border-box;
+  }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .unified-tracker__shell {
+    padding: var(--page-pad-top) 16px 100px;
+  }
+
+  /* Hide header year control on mobile, use inner toolbar control */
+  .unified-tracker__head .unified-tracker__year {
+    display: none;
+  }
+
+  .unified-tracker__container {
+    padding: 12px 10px 16px;
+    gap: 14px;
+    --tracker-square-size: 26px;
+    margin: 0;
+  }
+
+  .unified-tracker__toolbar {
+    padding: 10px;
+    gap: 14px;
+  }
+
+  .unified-tracker__toolbar-top {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .unified-tracker__select {
+    min-width: 100%;
+  }
+
+  .unified-tracker__select select {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .unified-tracker__year {
+    padding: 10px 12px;
+  }
+
+  .unified-tracker__quicknav {
+    gap: 10px;
+  }
+
+  .unified-tracker__quicknav-rail {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .unified-tracker__quicknav-list {
+    grid-auto-columns: minmax(120px, 1fr);
+    gap: 8px;
+    padding: 4px;
+  }
+
+  .unified-tracker__quicknav-button {
+    padding: 10px 12px;
+    font-size: var(--text-xs);
+  }
+
+  .unified-tracker__quicknav-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .unified-tracker__header h1 {
+    font-size: 1.4rem;
+  }
+
+  .unified-tracker__header p {
+    font-size: var(--text-xs);
+  }
+
+  .unified-tracker__palette-card {
+    padding: 10px 12px 12px;
+  }
+
+  .unified-tracker__palette {
+    gap: 5px;
+  }
+
+  .unified-tracker__palette-button {
+    width: var(--tracker-square-size);
+    height: var(--tracker-square-size);
+    min-height: var(--tracker-square-size);
+    font-size: 10px;
+  }
+
+  .unified-tracker__table-wrapper {
+    padding: 0;
+    min-height: 400px;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+    border: none;
+    background: transparent;
+  }
+
+  .unified-tracker__table-hint {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  .unified-tracker__table th,
+  .unified-tracker__table td {
+    font-size: 9px;
+    width: var(--tracker-square-size);
+    min-width: var(--tracker-square-size);
+    max-width: var(--tracker-square-size);
+    height: var(--tracker-square-size);
+    box-sizing: border-box;
+  }
+
+  .unified-tracker__month-label {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    background: var(--card) !important;
+    min-width: 44px !important;
+    width: 44px !important;
+    max-width: 44px !important;
+    height: var(--tracker-square-size) !important;
+    font-size: 9px !important;
+    padding-left: 4px !important;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
+  }
+
+  .unified-tracker__table thead th:first-child {
+    min-width: 44px !important;
+    width: 44px !important;
+    max-width: 44px !important;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@media (max-width: 480px) {
+  .unified-tracker__shell {
+    padding: var(--page-pad-top) 0px 12px;
+  }
+
+  .unified-tracker__head h1 {
+    font-size: 1.25rem;
+  }
+
+  .unified-tracker__container {
+    padding: 10px 8px 14px;
+    --tracker-square-size: 24px;
+    gap: 12px;
+  }
+
+  .unified-tracker__toolbar {
+    padding: 8px;
+  }
+
+  .unified-tracker__select select {
+    padding: 10px;
+    font-size: var(--text-xs);
+  }
+
+  .unified-tracker__year {
+    padding: 8px 10px;
+  }
+
+  .unified-tracker__year button {
+    width: 28px;
+    height: 28px;
+  }
+
+  .unified-tracker__quicknav-list {
+    grid-auto-columns: minmax(100px, 1fr);
+  }
+
+  .unified-tracker__quicknav-button {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .unified-tracker__quicknav-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .unified-tracker__quicknav-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .unified-tracker__header h1 {
+    font-size: 1.2rem;
+  }
+
+  .unified-tracker__palette-button {
+    font-size: 9px;
+  }
+
+  .unified-tracker__table-wrapper {
+    padding: 0;
+    min-height: 350px;
+  }
+
+  .unified-tracker__table th,
+  .unified-tracker__table td {
+    font-size: 8px;
+    width: var(--tracker-square-size);
+    min-width: var(--tracker-square-size);
+    max-width: var(--tracker-square-size);
+    height: var(--tracker-square-size);
+    box-sizing: border-box;
+  }
+
+  .unified-tracker__month-label {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    background: var(--card) !important;
+    min-width: 38px !important;
+    width: 38px !important;
+    max-width: 38px !important;
+    height: var(--tracker-square-size) !important;
+    font-size: 8px !important;
+    padding-left: 3px !important;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
+  }
+
+  .unified-tracker__table thead th:first-child {
+    min-width: 38px !important;
+    width: 38px !important;
+    max-width: 38px !important;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
+  }
+}

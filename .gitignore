@@ -1,0 +1,30 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Ignore everything
+*
+
+# Except these files/folders
+!.gitignore
+!README.md
+!.env.example
+!LICENSE
+!package.json
+!package-lock.json
+
+# Source code
+!src/
+!src/**
+
+# Public assets
+!public/
+!public/**
+
+# Ignore sensitive files even if in allowed folders
+src/firebase.js
+
+# Environment files (keep only example)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

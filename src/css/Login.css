@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+
+:root {
+    /* Dark theme (default) */
+    --bg-1: #06110a;
+    --bg-2: #071614;
+    --card: rgba(255, 255, 255, 0.03);
+    --muted: rgba(255, 255, 255, 0.7);
+    --text: #eafaf0;
+    --accent-a: #00ff9a;
+    /* bright green (dark theme) */
+    --accent-b: #00c389;
+    /* teal green (dark theme) */
+}
+
+/* Light theme overrides */
+[data-theme="light"] {
+    --bg-1: #f6fff8;
+    --bg-2: #edfef4;
+    --card: rgba(2, 6, 23, 0.03);
+    --muted: rgba(2, 6, 23, 0.6);
+    --text: #062014;
+    --accent-a: #0b6b3f;
+    /* darker green (light theme) */
+    --accent-b: #16a34a;
+    /* green (light theme) */
+}
+
+/* Reset + fonts */
+.unique-login-container,
+.unique-login-container * {
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.unique-login-container {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: radial-gradient(600px 300px at 80% 20%, rgba(0, 195, 137, 0.12), transparent 10%), radial-gradient(400px 240px at 20% 80%, rgba(0, 255, 154, 0.08), transparent 12%), linear-gradient(180deg, var(--bg-1), var(--bg-2));
+    color: var(--text);
+}
+
+.unique-login-box {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 32px;
+    border-radius: 0px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 12px 40px rgba(2, 6, 23, 0.06), 0 6px 18px rgba(0, 195, 137, 0.04);
+    position: relative;
+    overflow: visible;
+}
+
+.unique-login-box::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: 30px;
+    width: 220px;
+    height: 120px;
+    filter: blur(30px);
+    background: radial-gradient(circle at 30% 30%, rgba(0, 195, 137, 0.22), rgba(0, 255, 154, 0.12) 50%, transparent 60%);
+    opacity: 0.95;
+    pointer-events: none;
+}
+
+.unique-login-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    justify-content: center;
+}
+
+.unique-login-brand-mark {
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+}
+
+.unique-login-brand-word {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--muted);
+}
+
+.unique-login-title {
+    font-size: 22px;
+    margin: 6px 0 6px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.unique-login-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 20px;
+    text-align: center;
+}
+
+.unique-login-field {
+    position: relative;
+    margin-bottom: 14px
+}
+
+.unique-login-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 14px
+}
+
+.unique-login-input {
+    width: 100%;
+    padding: 14px 14px 14px 40px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px
+}
+
+.unique-login-input::placeholder {
+    color: rgba(255, 255, 255, 0.45)
+}
+
+.unique-login-input:focus {
+    box-shadow: 0 6px 20px rgba(0, 195, 137, 0.06);
+    border-color: rgba(0, 195, 137, 0.6)
+}
+
+.unique-login-button {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    background: linear-gradient(90deg, var(--accent-b), var(--accent-a));
+    box-shadow: 0 10px 30px rgba(0, 255, 154, 0.08), inset 0 -6px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 140ms ease, box-shadow 140ms ease
+}
+
+.unique-login-button:hover:not(:disabled) {
+    /* transform: translateY(-3px); */
+    box-shadow: 0 18px 40px rgba(0, 195, 137, 0.12)
+}
+
+.unique-login-button:disabled {
+    opacity: 0.6
+}
+
+/* OR separator */
+.unique-or {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+    color: var(--muted);
+    font-size: 12px
+}
+
+.unique-or:before,
+.unique-or:after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.04)
+}
+
+/* Social buttons */
+.unique-login-google,
+.unique-login-social {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center
+}
+
+.unique-login-google svg,
+.unique-login-social svg {
+    width: 18px;
+    height: 18px
+}
+
+.unique-login-error {
+    color: #ff8a80;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.unique-login-toggle {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 13px
+}
+
+.unique-login-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text);
+    opacity: 0.9;
+    font-weight: 600;
+    cursor: pointer
+}
+
+/* compact mobile layout */
+@media (max-width:480px) {
+    .unique-login-box {
+        padding: 20px 18px;
+        border-radius: 0px;
+        max-width: 360px
+    }
+
+    .unique-login-title {
+        font-size: 18px
+    }
+
+    .unique-login-subtitle {
+        font-size: 12px
+    }
+
+    .unique-login-input {
+        padding: 12px 12px 12px 40px
+    }
+}
+
+/* password masking */
+.unique-login-password-mask {
+    -webkit-text-security: disc;
+    text-security: disc
+}
+
+/* Spinner */
+.unique-login-spinner {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle
+}
+
+@keyframes unique-spin {
+    from {
+        transform: rotate(0)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.unique-login-spinner svg {
+    width: 100%;
+    height: 100%;
+    animation: unique-spin 1s linear infinite
+}
+
+/* Light theme form overrides for cleaner professional look */
+[data-theme="light"] .unique-login-box {
+    background: linear-gradient(180deg, #ffffff, #fbfffb);
+    border: 1px solid rgba(2, 6, 23, 0.06);
+    box-shadow: 0 8px 30px rgba(6, 24, 12, 0.06);
+    color: var(--text);
+}
+
+[data-theme="light"] .unique-login-input {
+    background: #ffffff;
+    border: 1px solid rgba(2, 6, 23, 0.06);
+    color: var(--text);
+    box-shadow: none;
+}
+
+[data-theme="light"] .unique-login-input::placeholder {
+    color: rgba(2, 6, 23, 0.35);
+}
+
+[data-theme="light"] .unique-login-google {
+    background: #f3f7f3;
+    border: 1px solid rgba(2, 6, 23, 0.04);
+    color: var(--text);
+}
+
+[data-theme="light"] .unique-or:before,
+[data-theme="light"] .unique-or:after {
+    background: rgba(2, 6, 23, 0.06);
+}
+
+[data-theme="light"] .unique-login-box::after {
+    background: radial-gradient(circle at 30% 30%, rgba(11, 107, 63, 0.18), rgba(22, 163, 74, 0.08) 50%, transparent 60%);
+}

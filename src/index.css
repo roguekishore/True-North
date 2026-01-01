@@ -1,0 +1,320 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  min-height: 100%;
+  width: 100%;
+}
+
+#root {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+h3.month-title {
+  border: none !important;
+}
+
+/* Strongest override for Favorite Moments h3 month-title to beat earlier !important rules */
+.moments-card .month-navigation.month-nav h3.month-title {
+  border: none !important;
+  background: transparent !important;
+}
+/* Ensure the `.month-title` class (regardless of element) has no border. */
+.month-title {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Mobile-specific overrides: ensure `.month-title` and related month label elements
+   don't show borders or panel backgrounds on small screens where other rules force them. */
+@media (max-width: 768px) {
+  .month-navigation.month-nav .month-title-wrap,
+  .month-navigation.month-nav h2,
+  .month-navigation.month-nav h3,
+  .month-title,
+  .moments-card .month-navigation.month-nav .month-title-wrap,
+  .moments-card .month-navigation.month-nav h3.month-title {
+    border: none !important;
+    background: transparent !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .month-navigation.month-nav .month-title-wrap,
+  .month-navigation.month-nav h2,
+  .month-navigation.month-nav h3,
+  .month-title,
+  .moments-card .month-navigation.month-nav .month-title-wrap,
+  .moments-card .month-navigation.month-nav h3.month-title {
+    border: none !important;
+    background: transparent !important;
+  }
+}
+/* Global month switcher overrides - keep month navs consistent across components */
+:where(.month-nav, .tracker-graphs__month-nav, .sas-month-navigation, .meds-month-navigation, .unified-tracker__month-nav) {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  width: 100%;
+}
+
+/* Prev / Next arrow buttons - square boxes */
+:where(.month-nav__btn, .tracker-graphs__quicknav-arrow, .unified-tracker__quicknav-arrow) {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  color: var(--text) !important;
+  cursor: pointer !important;
+  flex: 0 0 auto !important;
+}
+/* Month label - fills remaining space, centered text with border */
+:where(.month-nav__label, .month-nav h2, .month-nav h3, .tracker-graphs__month-label) {
+  flex: 1 1 auto !important;
+  margin: 0 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 44px !important;
+  padding: 0 14px !important;
+  background: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--muted) !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure everything visually lines up on small screens */
+@media (max-width: 480px) {
+  :where(.month-nav__btn, .tracker-graphs__quicknav-arrow, .unified-tracker__quicknav-arrow) {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+  }
+
+  :where(.month-nav__label, .month-nav h2, .month-nav h3, .tracker-graphs__month-label) {
+    height: 38px !important;
+    margin: 0 8px !important;
+    padding: 0 10px !important;
+  }
+}
+
+/* Also apply overrides for small tablets / large phones where components have their own 768px rules */
+@media (max-width: 768px) {
+  /* force the navigation to remain single-row and unified heights */
+  .month-navigation.month-nav,
+  :where(.month-nav, .tracker-graphs__month-nav, .sas-month-navigation, .meds-month-navigation, .unified-tracker__month-nav) {
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+  }
+
+  .month-navigation.month-nav button,
+  .month-navigation.month-nav .month-nav__btn,
+  .month-navigation.month-nav .moments-nav-button,
+  :where(.month-nav__btn, .tracker-graphs__quicknav-arrow, .unified-tracker__quicknav-arrow) {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    padding: 0 !important;
+  }
+
+  .month-navigation.month-nav .month-title-wrap,
+  .month-navigation.month-nav h2,
+  .month-navigation.month-nav h3,
+  .habit-month.month-nav .pill,
+  :where(.month-nav__label, .month-nav h2, .month-nav h3, .tracker-graphs__month-label) {
+    height: 44px !important;
+    padding: 0 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* Specific overrides for .month-navigation (used in TrackerGraph and DailyMoments) */
+.month-navigation.month-nav {
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+}
+
+.month-navigation.month-nav button,
+.month-navigation.month-nav .month-nav__btn,
+.month-navigation.month-nav .moments-nav-button {
+  flex: 0 0 auto !important;
+  width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.month-navigation.month-nav .month-title-wrap,
+.month-navigation.month-nav h2,
+.month-navigation.month-nav h3 {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 44px !important;
+  padding: 0 14px !important;
+  background: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--muted) !important;
+  box-sizing: border-box !important;
+  width: auto !important;
+  order: 0 !important;
+}
+
+/* Force exact vertical centering by using line-height and removing internal gaps */
+.month-navigation.month-nav .month-title-wrap {
+  gap: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.month-navigation.month-nav .month-title-wrap .month-title,
+.month-navigation.month-nav h2,
+.month-navigation.month-nav h3 {
+  margin: 0 !important;
+  line-height: 44px !important;
+  display: block !important;
+}
+
+/* habit pill exact centering */
+.habit-month.month-nav .pill {
+  line-height: 44px !important;
+}
+
+/* SVG sizing inside buttons to avoid growing the button height */
+:where(.month-nav__btn svg, .tracker-graphs__quicknav-arrow svg, .unified-tracker__quicknav-arrow svg) {
+  width: auto !important;
+  height: 18px !important;
+  display: block !important;
+}
+
+/* Component-targeted overrides to beat component mobile rules */
+.moments-card .month-navigation.month-nav .month-title-wrap,
+.moments-card .month-navigation.month-nav h3.month-title {
+  border: 1px solid var(--border) !important;
+  background: var(--panel) !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 14px !important;
+  box-sizing: border-box !important;
+}
+
+.habit-head .habit-month.month-nav .pill {
+  border: 1px solid var(--border) !important;
+  background: var(--panel) !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 14px !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure the month buttons remain fixed size within these components */
+.moments-card .month-navigation.month-nav .moments-nav-button.month-nav__btn,
+.habit-head .habit-month.month-nav .month-nav__btn {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Final override: placed at end to guarantee it wins over earlier !important rules */
+body .moments-card .month-navigation.month-nav h3.month-title,
+body .moments-card .month-navigation.month-nav .month-title {
+  border: none !important;
+  background: transparent !important;
+}
+
+@media (max-width: 768px) {
+  .moments-card .month-navigation.month-nav .month-title-wrap,
+  .moments-card .month-navigation.month-nav h3.month-title,
+  .habit-head .habit-month.month-nav .pill {
+    /* height: 38px !important; */
+    flex: 1 1 auto !important;
+    line-height: 38px !important;
+    padding: 0 10px !important;
+  }
+  .moments-card .month-navigation.month-nav .moments-nav-button.month-nav__btn,
+  .habit-head .habit-month.month-nav .month-nav__btn {
+    height: 38px !important;
+    width: 38px !important;
+    min-width: 38px !important;
+    flex: 0 0 38px !important;
+    padding: 0 !important;
+  }
+  :where(.moments-card .month-navigation.month-nav .moments-nav-button.month-nav__btn svg,
+         .habit-head .habit-month.month-nav .month-nav__btn svg) {
+    height: 16px !important;
+  }
+}
+
+/* Habit tracker specific month label (uses .pill) */
+.habit-month.month-nav .pill {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 1 1 auto !important;
+  height: 44px !important;
+  padding: 0 14px !important;
+  background: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--muted) !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 480px) {
+  /* Buttons - fixed square size */
+  .month-navigation.month-nav button,
+  .month-navigation.month-nav .month-nav__btn {
+    height: 38px !important;
+    width: 38px !important;
+    min-width: 38px !important;
+    flex: 0 0 38px !important;
+    padding: 0 !important;
+  }
+
+  /* Month label/pill - stretches to fill remaining space */
+  .habit-month.month-nav .pill {
+    height: 38px !important;
+    flex: 1 1 auto !important;
+    padding: 0 8px !important;
+    line-height: 38px !important;
+  }
+
+  .month-navigation.month-nav .month-title-wrap,
+  .month-navigation.month-nav h2,
+  .month-navigation.month-nav h3 {
+    height: 38px !important;
+    flex: 1 1 auto !important;
+    padding: 0 8px !important;
+    line-height: 38px !important;
+  }
+
+  :where(.month-nav__btn svg, .tracker-graphs__quicknav-arrow svg, .unified-tracker__quicknav-arrow svg) {
+    height: 16px !important;
+  }
+}
+
+h3.month-title {
+  border: none !important;
+}
