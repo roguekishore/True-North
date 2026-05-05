@@ -36,6 +36,7 @@
   /* Layout spacing */
   --page-pad-x: 18px;
   --page-pad-top: 30px;
+  --nav-height: 60px;
 
   /* Typography scale */
   --text-xxs: 11px;
@@ -268,6 +269,7 @@ select,
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  padding-top: calc(var(--nav-height) + 16px);
 }
 
 /* Mobile-friendly chart containers */

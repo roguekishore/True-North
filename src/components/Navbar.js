@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { forceRefreshAllData } from "../utils/dataSync";
 import "../css/Navbar.css";
-import WhiteLogo from './white.svg';
-import BlackLogo from './black.svg';
+import WhiteLogo from "./white.svg";
+import BlackLogo from "./black.svg";
 
 // Sun and Moon SVG icons as components
 const SunIcon = () => (
@@ -69,6 +69,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [syncing, setSyncing] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useState(() => {
     try {
       return localStorage.getItem('site-theme') || document.documentElement.dataset.theme || 'dark';
@@ -76,6 +77,12 @@ const Navbar = () => {
       return document.documentElement.dataset.theme || 'dark';
     }
   });
+
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
 
   useEffect(() => {
     try {
@@ -113,105 +120,80 @@ const Navbar = () => {
     }
   };
 
-  const linkClass = ({ isActive }) => `nav-link${isActive ? " is-active" : ""}`;
+  const linkClass = ({ isActive }) => `tn-nav-link${isActive ? " is-active" : ""}`;
 
   const handleLinkClick = () => setOpen(false);
 
   const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 
   return (
-    <nav className="navbar">
-      <div className="navbar__inner">
-        <button className="navbar__brand" onClick={() => { setOpen(false); navigate("/"); }}>
-          <img
-            src={theme === 'dark' ? WhiteLogo : BlackLogo}
-            alt="Journalcom"
-            className="brand-mark"
-            style={{ width: 28, height: 28 }}
-          />
-          <span className="brand-word">True North</span>
-        </button>
+    <nav className={`tn-nav${scrolled ? " scrolled" : ""}`}>
+      <Link to="/" className="tn-logo" onClick={() => setOpen(false)}>
+        <img
+          src={theme === "dark" ? WhiteLogo : BlackLogo}
+          alt="True North"
+          className="tn-brand-mark"
+        />
+        <span className="tn-brand-word">TRUE NORTH</span>
+      </Link>
 
-        {/* Mobile controls: theme toggle + sync + hamburger */}
-        <div className="navbar__mobile-controls">
+      <div className="tn-nav-actions">
+        <button
+          className={`tn-nav-toggle${open ? " is-open" : ""}`}
+          aria-label="Toggle navigation"
+          onClick={() => setOpen(!open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
+
+      <ul className={`tn-nav-links${open ? " is-open" : ""}`}>
+        {navItems.map((item) => (
+          <li key={item.to}>
+            <NavLink to={item.to} className={linkClass} onClick={handleLinkClick}>
+              <span className="tn-nav-icon">
+                {item.key === 'home' && <HomeIcon />}
+                {item.key === 'habit' && <HabitIcon />}
+                {item.key === 'journal' && <JournalIcon />}
+                {item.key === 'entries' && <EntriesIcon />}
+                {item.key === 'trackers' && <TrackersIcon />}
+              </span>
+              <span className="tn-nav-label">{item.label}</span>
+            </NavLink>
+          </li>
+        ))}
+        <li className="tn-nav-utility">
           <button
             type="button"
-            className="sync-button sync-button__mobile"
+            className="tn-nav-link tn-nav-button"
             onClick={handleSync}
             disabled={syncing}
-            aria-label="Sync data from cloud"
             title="Sync data from cloud"
           >
-            <SyncIcon />
+            <span className="tn-nav-icon"><SyncIcon /></span>
+            <span className="tn-nav-label">{syncing ? "Syncing" : "Sync"}</span>
           </button>
-          
+        </li>
+        <li className="tn-nav-utility">
           <button
             type="button"
-            className="theme-toggle__button theme-toggle__mobile"
+            className="tn-nav-link tn-nav-button"
             onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-            title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            aria-pressed={theme === "light"}
+            title="Toggle light / dark theme"
           >
-            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+            <span className="tn-nav-icon">{theme === "dark" ? <SunIcon /> : <MoonIcon />}</span>
+            <span className="tn-nav-label">{theme === "dark" ? "Light" : "Dark"}</span>
           </button>
-          
-          <button
-            className={`navbar__toggle${open ? " is-open" : ""}`}
-            aria-label="Toggle navigation"
-            onClick={() => setOpen(!open)}
-          >
-            <span />
-            <span />
-            <span />
+        </li>
+        <li className="tn-nav-utility tn-nav-logout">
+          <button onClick={handleLogout} className="tn-nav-link tn-nav-button">
+            Logout
           </button>
-        </div>
-
-        <ul className={`nav-list${open ? " is-open" : ""}`}>
-          {navItems.map((item) => (
-            <li key={item.to}>
-              <NavLink to={item.to} className={linkClass} onClick={handleLinkClick}>
-                <span className="nav-icon">
-                  {item.key === 'home' && <HomeIcon />}
-                  {item.key === 'habit' && <HabitIcon />}
-                  {item.key === 'journal' && <JournalIcon />}
-                  {item.key === 'entries' && <EntriesIcon />}
-                  {item.key === 'trackers' && <TrackersIcon />}
-                </span>
-                <span className="nav-label">{item.label}</span>
-              </NavLink>
-            </li>
-          ))}
-          <li className="sync-toggle sync-toggle__desktop">
-            <button
-              type="button"
-              className="sync-button"
-              onClick={handleSync}
-              disabled={syncing}
-              title="Sync data from cloud"
-            >
-              <SyncIcon />
-              <span className="sync-button__label">{syncing ? 'Syncing' : 'Sync'}</span>
-            </button>
-          </li>
-          <li className="theme-toggle theme-toggle__desktop">
-            <button
-              type="button"
-              className="theme-toggle__button"
-              onClick={toggleTheme}
-              aria-pressed={theme === 'light'}
-              title="Toggle light / dark theme"
-            >
-              {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-              <span className="theme-toggle__label">{theme === 'dark' ? 'Light' : 'Dark'}</span>
-            </button>
-          </li>
-          <li className="logout">
-            <button onClick={handleLogout} className="logout-button">
-              Logout
-            </button>
-          </li>
-        </ul>
-      </div>
+        </li>
+      </ul>
     </nav>
   );
 };
