@@ -3,6 +3,8 @@ import { loginUser, registerUser, signInWithGoogle, mapAuthError } from '../util
 import { useNavigate } from 'react-router-dom';
 import '../css/Login.css';
 import { FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa';
+import whiteSvg from './white.svg';
+import blackSvg from './black.svg';
 
 // Simple inline spinner component
 const Spinner = () => (
@@ -123,7 +125,7 @@ const Login = () => {
             <div className="unique-login-box">
                 <div className="unique-login-brand">
                     <img
-                        src={theme === 'dark' ? require('./white.svg').default : require('./black.svg').default}
+                        src={theme === 'dark' ? whiteSvg : blackSvg}
                         alt="Journalcom"
                         className="unique-login-brand-mark"
                         style={{ width: 40, height: 40 }}

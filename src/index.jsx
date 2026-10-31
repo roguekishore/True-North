@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css'; 
 import './firebase'; 
@@ -14,20 +14,20 @@ try {
   // console.error('Failed to apply saved theme', e);
 }
 
-if (process.env.NODE_ENV === "production") {
-  const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-  navigator.serviceWorker.register(swUrl).then((registration) => {
+if (import.meta.env.MODE === "production") {
+  const swUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/service-worker.js`;
+  navigator.serviceWorker?.register?.(swUrl).then((registration) => {
     // console.log("Service Worker registered: ", registration);
   }).catch((error) => {
     // console.log("Service Worker registration failed: ", error);
   });
 }
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
