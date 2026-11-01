@@ -10,6 +10,8 @@
 !LICENSE
 !package.json
 !package-lock.json
+!index.html
+!vite.config.js
 
 # Source code
 !src/
@@ -19,8 +21,9 @@
 !public/
 !public/**
 
-# Ignore sensitive files even if in allowed folders
-src/firebase.js
+# Docs
+!docs/
+!docs/**
 
 # Environment files (keep only example)
 .env
